@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Social Media Kit</title>
+<meta name="description" content="LinkedIn- und Instagram-Auftritt für Save State Studio: Profiltexte, Strategie, Redaktionsplan, fertige Posts und Bild-Assets.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #1C1C1E;
+    --surface: #202023;
+    --card: rgba(226, 199, 102, 0.05);
+    --card-border: rgba(226, 199, 102, 0.14);
+    --gold: #E2C766;
+    --cream: #ece6d8;
+    --text: #ECECEC;
+    --text-muted: #9a949e;
+    --outline: rgba(154, 148, 158, 0.18);
+    --font-display: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-display);
+    -webkit-font-smoothing: antialiased;
+    padding-inline: 20px;
+  }
+  a { color: var(--gold); }
+  h1, h2, h3 { text-wrap: balance; font-family: var(--font-display); }
+
+  .wrap { max-width: 920px; margin: 0 auto; padding-bottom: 100px; }
+
+  /* ---------- top nav ---------- */
+  nav.tabs {
+    position: sticky;
+    top: env(safe-area-inset-top, 0px);
+    z-index: 10;
+    display: flex;
+    gap: 4px;
+    overflow-x: auto;
+    background: var(--bg);
+    padding-block: 14px 10px;
+    border-bottom: 1px solid var(--outline);
+    margin-bottom: 8px;
+  }
+  nav.tabs a {
+    flex-shrink: 0;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text-muted);
+    text-decoration: none;
+    padding: 7px 13px;
+    border-radius: 999px;
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    white-space: nowrap;
+  }
+  nav.tabs a:hover { color: var(--text); }
+
+  /* ---------- hero ---------- */
+  .hero { padding-block: 28px 8px; display: flex; align-items: flex-start; gap: 22px; }
+  .hero .icon { flex-shrink: 0; margin-top: 6px; }
+  .eyebrow {
+    font-size: 11.5px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--gold);
+  }
+  h1.title { font-size: clamp(28px, 5vw, 38px); font-weight: 800; margin: 8px 0 10px; letter-spacing: 0.01em; }
+  .lede { font-size: 15.5px; color: var(--text-muted); line-height: 1.6; max-width: 640px; }
+  .accounts { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 18px; }
+  .account-chip {
+    display: flex; align-items: center; gap: 8px;
+    font-size: 13px; font-weight: 700;
+    background: var(--card); border: 1px solid var(--card-border);
+    border-radius: 999px; padding: 8px 14px;
+  }
+  .account-chip svg { flex-shrink: 0; color: var(--gold); }
+
+  /* ---------- sections ---------- */
+  section { padding-block: 36px; border-top: 1px solid var(--outline); scroll-margin-top: 64px; }
+  section:first-of-type { border-top: none; }
+  .section-eyebrow { font-size: 11.5px; font-weight: 800; letter-spacing: 0.09em; text-transform: uppercase; color: var(--gold); }
+  h2.section-title { font-size: clamp(22px, 4vw, 27px); font-weight: 800; margin: 8px 0 20px; }
+  .section-intro { font-size: 14.5px; color: var(--text-muted); line-height: 1.6; margin-bottom: 22px; max-width: 640px; }
+
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  @media (max-width: 680px) { .grid-2 { grid-template-columns: 1fr; } }
+
+  .card {
+    background: var(--card); border: 1px solid var(--card-border);
+    border-radius: 16px; padding: 20px 22px;
+  }
+  .card-head { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+  .card-head svg { color: var(--gold); flex-shrink: 0; }
+  .card-head h3 { font-size: 16.5px; font-weight: 800; margin: 0; }
+
+  .steps { margin: 0; padding: 0; list-style: none; counter-reset: step; }
+  .steps li { counter-increment: step; display: flex; gap: 12px; margin-top: 14px; font-size: 14px; line-height: 1.55; }
+  .steps li:first-child { margin-top: 0; }
+  .steps li::before {
+    content: counter(step); flex-shrink: 0; width: 22px; height: 22px; border-radius: 50%;
+    background: var(--gold); color: var(--bg); font-weight: 800; font-size: 12px;
+    display: flex; align-items: center; justify-content: center; margin-top: 1px;
+  }
+  .steps code { background: var(--surface); border: 1px solid var(--outline); border-radius: 5px; padding: 1px 6px; font-size: 12.5px; }
+
+  /* ---------- copy blocks ---------- */
+  .field { margin-top: 16px; }
+  .field:first-child { margin-top: 0; }
+  .field-label { font-size: 11.5px; font-weight: 800; letter-spacing: 0.05em; text-transform: uppercase; color: var(--text-muted); display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+  .field-text {
+    margin-top: 6px; font-size: 14px; line-height: 1.55; white-space: pre-wrap;
+    background: var(--surface); border: 1px solid var(--outline); border-radius: 10px; padding: 12px 14px;
+  }
+  .copy-btn {
+    font-family: inherit; font-size: 11px; font-weight: 800; letter-spacing: 0.03em;
+    color: var(--gold); background: none; border: none; cursor: pointer; padding: 2px 4px;
+    display: flex; align-items: center; gap: 4px; text-transform: uppercase;
+  }
+  .copy-btn svg { width: 12px; height: 12px; }
+  .copy-btn.copied { color: var(--cream); }
+
+  /* ---------- strategy pillars ---------- */
+  .pillars { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; }
+  .pillar { background: var(--card); border: 1px solid var(--card-border); border-radius: 14px; padding: 18px; }
+  .pillar svg { color: var(--gold); }
+  .pillar h4 { font-size: 14.5px; font-weight: 800; margin: 10px 0 6px; }
+  .pillar p { font-size: 13px; color: var(--text-muted); line-height: 1.5; margin: 0; }
+
+  .platform-compare { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 22px; }
+  @media (max-width: 680px) { .platform-compare { grid-template-columns: 1fr; } }
+  .platform-compare .card ul { margin: 0; padding-left: 18px; font-size: 13.5px; color: var(--text-muted); line-height: 1.7; }
+  .platform-compare .card ul li strong { color: var(--text); }
+
+  /* ---------- calendar ---------- */
+  .cal-table-wrap { overflow-x: auto; border-radius: 14px; border: 1px solid var(--card-border); }
+  table.cal { width: 100%; border-collapse: collapse; font-size: 13.5px; min-width: 640px; }
+  table.cal th { text-align: left; font-size: 11px; font-weight: 800; letter-spacing: 0.05em; text-transform: uppercase; color: var(--text-muted); padding: 12px 16px; background: var(--card); }
+  table.cal td { padding: 14px 16px; border-top: 1px solid var(--outline); vertical-align: top; }
+  table.cal tr:nth-child(odd) td { background: rgba(226, 199, 102, 0.03); }
+  .platform-tag { display: inline-block; font-size: 10.5px; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase; padding: 2px 8px; border-radius: 999px; margin-bottom: 4px; }
+  .platform-tag.li { background: rgba(236, 230, 216, 0.12); color: var(--cream); }
+  .platform-tag.ig { background: rgba(226, 199, 102, 0.16); color: var(--gold); }
+
+  /* ---------- posts ---------- */
+  .post-card {
+    background: var(--card); border: 1px solid var(--card-border); border-radius: 18px; overflow: hidden;
+    display: grid; grid-template-columns: 220px 1fr;
+  }
+  @media (max-width: 620px) { .post-card { grid-template-columns: 1fr; } }
+  .post-card img { width: 100%; height: 100%; object-fit: cover; display: block; background: var(--surface); }
+  .post-card .post-body { padding: 20px 22px; }
+  .post-card .post-platform { font-size: 11px; font-weight: 800; letter-spacing: 0.05em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
+  .post-card .post-caption { font-size: 13.5px; line-height: 1.65; white-space: pre-wrap; color: var(--text); }
+  .post-card .post-hashtags { margin-top: 10px; font-size: 12.5px; color: var(--gold); opacity: 0.85; }
+  .post-list { display: flex; flex-direction: column; gap: 18px; }
+
+  /* ---------- assets ---------- */
+  .asset-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 18px; }
+  .asset-card { background: var(--card); border: 1px solid var(--card-border); border-radius: 14px; padding: 16px; text-align: center; }
+  .asset-card img { max-width: 100%; border-radius: 8px; background: var(--surface); }
+  .asset-card img.round { border-radius: 50%; width: 120px; height: 120px; object-fit: cover; }
+  .asset-card .asset-name { font-size: 13.5px; font-weight: 800; margin-top: 12px; }
+  .asset-card .asset-spec { font-size: 12px; color: var(--text-muted); margin-top: 3px; font-variant-numeric: tabular-nums; }
+
+  footer.note { margin-top: 40px; font-size: 12.5px; color: var(--text-muted); line-height: 1.6; text-align: center; }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <nav class="tabs">
+    <a href="#setup">Setup</a>
+    <a href="#profile">Profiltexte</a>
+    <a href="#strategy">Strategie</a>
+    <a href="#calendar">Redaktionsplan</a>
+    <a href="#posts">Posts</a>
+    <a href="#assets">Assets</a>
+  </nav>
+
+  <div class="hero">
+    <img class="icon" src="images/profile_picture.png" alt="Save State Studio Icon" width="56" height="56" style="border-radius:14px;">
+    <div>
+      <span class="eyebrow">Social Media Kit</span>
+      <h1 class="title">Save State Studio auf LinkedIn &amp; Instagram</h1>
+      <p class="lede">Kein Produkt-Marketing für Apex Lifter selbst, sondern der Auftritt für das Studio dahinter: ein Vollzeit-Job tagsüber, Code nach Feierabend, keine Investoren, kein Wachstums-Zwang — nur ehrliche Apps zu einem fairen Preis, gebaut von jemandem, der sie selbst täglich benutzt.</p>
+      <div class="accounts">
+        <span class="account-chip">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/><path d="M10 9v12M10 13a4 4 0 0 1 8 0v8"/></svg>
+          LinkedIn — nicola.placi@savestate.ch
+        </span>
+        <span class="account-chip">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
+          Instagram — info@savestate.ch
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= SETUP ================= -->
+  <section id="setup">
+    <span class="section-eyebrow">01 — Erste Schritte</span>
+    <h2 class="section-title">Konten anlegen</h2>
+    <p class="section-intro">Beide Konten existieren noch nicht. Voraussetzung: die Domain <code>savestate.ch</code> und die beiden E-Mail-Adressen müssen zuerst eingerichtet sein. Danach diese Schritte mit den vorbereiteten Texten und Bildern aus diesem Kit.</p>
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-head">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/><path d="M10 9v12M10 13a4 4 0 0 1 8 0v8"/></svg>
+          <h3>LinkedIn Unternehmensseite</h3>
+        </div>
+        <ol class="steps">
+          <li>Falls noch nicht vorhanden: erst ein <strong>persönliches</strong> LinkedIn-Profil mit <code>nicola.placi@savestate.ch</code> anlegen — eine Unternehmensseite braucht immer mindestens ein persönliches Profil als Administrator.</li>
+          <li>Oben rechts auf <strong>„Für Unternehmen“ → „Unternehmensseite erstellen“</strong>.</li>
+          <li>Seitentyp: <strong>Kleinunternehmen</strong>.</li>
+          <li>Seitenname <code>Save State Studio</code>, LinkedIn-Adresse z. B. <code>linkedin.com/company/save-state-studio</code>, Website <code>savestate.ch</code>.</li>
+          <li>Branche: <strong>Softwareentwicklung</strong>. Unternehmensgrösse: <strong>Selbstständig</strong>.</li>
+          <li>Logo hochladen: <code>profile_picture.png</code>. Titelbild: <code>linkedin_banner.png</code>.</li>
+          <li>Beschreibung einfügen — Text unten unter „Profiltexte“.</li>
+        </ol>
+      </div>
+      <div class="card">
+        <div class="card-head">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
+          <h3>Instagram Business-Konto</h3>
+        </div>
+        <ol class="steps">
+          <li>In der Instagram-App: <strong>„Registrieren“</strong>, E-Mail <code>info@savestate.ch</code> verwenden.</li>
+          <li>Benutzername: <code>savestatestudio</code> (Alternative, falls vergeben: <code>save.state.studio</code> oder <code>savestate.ch</code>).</li>
+          <li>Einstellungen → Konto → <strong>„Zu professionellem Konto wechseln“</strong> → Kategorie „Softwareunternehmen“ oder „App-Seite“ → Typ <strong>Unternehmen</strong>.</li>
+          <li>Profilbild hochladen: <code>profile_picture.png</code>.</li>
+          <li>Bio einfügen — Text unten unter „Profiltexte“. Website-Link: <code>savestate.ch</code>.</li>
+          <li>Kontakt-E-Mail in den Business-Einstellungen: <code>info@savestate.ch</code>.</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= PROFILE TEXTS ================= -->
+  <section id="profile">
+    <span class="section-eyebrow">02 — Zum Reinkopieren</span>
+    <h2 class="section-title">Profiltexte</h2>
+    <p class="section-intro">In der Ich-Form geschrieben — das ist ein Ein-Personen-Studio, kein anonymes Unternehmen. Auf „Kopieren“ tippen und direkt ins jeweilige Feld einfügen.</p>
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-head">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/><path d="M10 9v12M10 13a4 4 0 0 1 8 0v8"/></svg>
+          <h3>LinkedIn</h3>
+        </div>
+        <div class="field">
+          <div class="field-label"><span>Tagline (Slogan, max. 120 Zeichen)</span><button class="copy-btn" data-copy="li-tagline">Kopieren</button></div>
+          <div class="field-text" id="li-tagline">Ehrliche, no-bullshit Apps — gebaut nach Feierabend von einem, der sie selbst täglich nutzt.</div>
+        </div>
+        <div class="field">
+          <div class="field-label"><span>Über uns</span><button class="copy-btn" data-copy="li-about">Kopieren</button></div>
+          <div class="field-text" id="li-about">Save State Studio ist ein Ein-Personen-Studio — geführt neben einem Vollzeit-Job, abends und am Wochenende, wenn Zeit für Familie und Code beides Platz hat.
+
+Der Antrieb ist einfach: Apps bauen, die mir selbst gefehlt haben, und die ich danach jeden Tag benutze. Keine Investoren, kein Wachstums-Zwang, kein Marketing-Gerede — nur ehrliche Software zu einem fairen Preis.
+
+Erstes Projekt: Apex Lifter, eine native Android-Trainings-App, die ich selbst im Gym benutze. Mehr dazu: apexlifter.ch
+
+Keine Werbung. Kein Tracking-Zwang. Und wer Apex Lifter schon nutzt: gerne als Freund hinzufügen und mich buzzen, wenn ich mal wieder zu lange am Code sitze statt zu trainieren.</div>
+        </div>
+        <div class="field">
+          <div class="field-label"><span>Branche</span></div>
+          <div class="field-text">Softwareentwicklung</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-head">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
+          <h3>Instagram</h3>
+        </div>
+        <div class="field">
+          <div class="field-label"><span>Name</span></div>
+          <div class="field-text">Save State Studio</div>
+        </div>
+        <div class="field">
+          <div class="field-label"><span>Bio (max. 150 Zeichen)</span><button class="copy-btn" data-copy="ig-bio">Kopieren</button></div>
+          <div class="field-text" id="ig-bio">Vollzeit-Job tagsüber. Code nach Feierabend.
+Ehrliche Apps, fair bepreist, ohne Ads.
+savestate.ch</div>
+        </div>
+        <div class="field">
+          <div class="field-label"><span>Kategorie</span></div>
+          <div class="field-text">Softwareunternehmen (Alternative: App-Seite)</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= STRATEGY ================= -->
+  <section id="strategy">
+    <span class="section-eyebrow">03 — Roter Faden</span>
+    <h2 class="section-title">Content-Strategie</h2>
+    <p class="section-intro">Fünf wiederkehrende Themen — im Zentrum steht die Person hinter dem Studio, nicht ein Feature-Katalog.</p>
+    <div class="pillars">
+      <div class="pillar">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/></svg>
+        <h4>Build in Public</h4>
+        <p>Warum diese Apps entstehen: Feierabend-Realität, einzelne Entscheidungen, was als Nächstes kommt. Funktioniert vor allem auf LinkedIn.</p>
+      </div>
+      <div class="pillar">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+        <h4>No Bullshit</h4>
+        <p>Fairer Preis, keine Ads, kein Wachstums-Zwang. Das Prinzip wird immer wieder explizit ausgesprochen, nicht nur impliziert.</p>
+      </div>
+      <div class="pillar">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M8 12h8M8 16h5"/></svg>
+        <h4>Dogfooding</h4>
+        <p>„Ich nutze es selbst" als Beweis statt Marketing-Versprechen — echte tägliche Nutzung, echte Screenshots, echte Zahlen.</p>
+      </div>
+      <div class="pillar">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        <h4>Feierabend &amp; Familie</h4>
+        <p>Der menschliche Teil: Vollzeit-Job, Familie, und dazwischen Zeit fürs eigene Projekt. Relatable für andere Feierabend-Bastler.</p>
+      </div>
+      <div class="pillar">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        <h4>Apex Lifter Updates</h4>
+        <p>Konkrete Feature-Drops des ersten Produkts fliessen hier mit rein — aber immer aus der Studio-Perspektive, nicht als reine Produktwerbung.</p>
+      </div>
+    </div>
+
+    <div class="platform-compare">
+      <div class="card">
+        <div class="card-head">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/><path d="M10 9v12M10 13a4 4 0 0 1 8 0v8"/></svg>
+          <h3>LinkedIn</h3>
+        </div>
+        <ul>
+          <li><strong>Ton:</strong> persönlich, Build-in-Public, Entscheidungen erklären</li>
+          <li><strong>Frequenz:</strong> 1–2× pro Woche</li>
+          <li><strong>Format:</strong> Text mit einem Bild, keine Reels</li>
+          <li><strong>Publikum:</strong> Indie-Devs, andere Feierabend-Gründer:innen, das eigene Netzwerk</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-head">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
+          <h3>Instagram</h3>
+        </div>
+        <ul>
+          <li><strong>Ton:</strong> kurz, ehrlich, ein bisschen trocken-humorvoll</li>
+          <li><strong>Frequenz:</strong> 2–3× pro Woche (Feed + Stories)</li>
+          <li><strong>Format:</strong> Feed-Posts zum Start, später Behind-the-scenes in Stories</li>
+          <li><strong>Publikum:</strong> potenzielle Nutzer:innen von Apex Lifter &amp; künftigen Apps</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CALENDAR ================= -->
+  <section id="calendar">
+    <span class="section-eyebrow">04 — Die ersten vier Wochen</span>
+    <h2 class="section-title">Redaktionsplan</h2>
+    <p class="section-intro">Ein Startrhythmus, keine starre Vorgabe — nach den ersten vier Wochen danach ausrichten, was tatsächlich Resonanz bringt.</p>
+    <div class="cal-table-wrap">
+      <table class="cal">
+        <thead><tr><th>Woche</th><th>Plattform</th><th>Inhalt</th></tr></thead>
+        <tbody>
+          <tr><td rowspan="2">1 — Launch</td><td><span class="platform-tag li">LinkedIn</span></td><td>Build-in-Public-Ankündigung (Entwurf unten) — warum Save State Studio existiert.</td></tr>
+          <tr><td><span class="platform-tag ig">Instagram</span></td><td>Intro-Post (Entwurf 1) + Story mit Link zu savestate.ch.</td></tr>
+          <tr><td rowspan="2">2 — Prinzip</td><td><span class="platform-tag ig">Instagram</span></td><td>No-Bullshit-Manifest (Entwurf 2): fairer Preis, keine Ads, kein Wachstums-Zwang.</td></tr>
+          <tr><td><span class="platform-tag ig">Instagram</span></td><td>Story-Umfrage: „Nervt dich Werbung in Apps auch so sehr?"</td></tr>
+          <tr><td rowspan="2">3 — Beweis</td><td><span class="platform-tag ig">Instagram</span></td><td>Dogfooding-Zitat (Entwurf 3): „Ich nutze Apex Lifter jeden Tag im Gym."</td></tr>
+          <tr><td><span class="platform-tag li">LinkedIn</span></td><td>Kurzer Einblick in den Alltag: Vollzeit-Job tagsüber, Code-Abende danach — wie das wirklich aussieht.</td></tr>
+          <tr><td rowspan="2">4 — Community</td><td><span class="platform-tag ig">Instagram</span></td><td>Freunde/Buzz-Insider-Post (Entwurf 4) für alle, die Apex Lifter schon nutzen.</td></tr>
+          <tr><td><span class="platform-tag li">LinkedIn</span></td><td>Zwischenbilanz nach 4 Wochen: was bisher passiert ist, was als Nächstes kommt.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ================= POSTS ================= -->
+  <section id="posts">
+    <span class="section-eyebrow">05 — Startklar</span>
+    <h2 class="section-title">Post-Entwürfe</h2>
+    <p class="section-intro">Bild direkt aus „Assets" verwenden, Text unverändert oder als Ausgangspunkt nutzen.</p>
+    <div class="post-list">
+      <div class="post-card">
+        <img src="images/post1_intro.png" alt="Save State Studio Intro-Post">
+        <div class="post-body">
+          <div class="post-platform">Instagram — Post 1</div>
+          <div class="post-caption">Save State Studio ist da.
+
+Ein Ein-Personen-Studio. Vollzeit-Job tagsüber, Code nach Feierabend. Keine Investoren, kein Wachstums-Zwang.
+
+Erste App: Apex Lifter — eine Trainings-App, die ich selbst jeden Tag benutze.
+
+savestate.ch</div>
+          <div class="post-hashtags">#indiedev #buildinpublic #nobullshit #androiddev #soloedev</div>
+        </div>
+      </div>
+
+      <div class="post-card">
+        <img src="images/post2_manifesto.png" alt="Save State Studio No-Bullshit-Manifest">
+        <div class="post-body">
+          <div class="post-platform">Instagram — Post 2</div>
+          <div class="post-caption">Keine Ads. Kein Marketing-Gerede. Nur eine geile App.
+
+Fairer Preis, ehrlich erklärt. Keine Werbung, kein Tracking-Zwang. Gebaut, weil ich sie selbst brauchte — nicht für den Exit.
+
+No-Bullshit-Software, von jemandem, der sie täglich benutzt.</div>
+          <div class="post-hashtags">#nobullshit #indieapp #fairpricing #privacyfirst</div>
+        </div>
+      </div>
+
+      <div class="post-card">
+        <img src="images/post3_quote.png" alt="Save State Studio Dogfooding-Zitat">
+        <div class="post-body">
+          <div class="post-platform">Instagram — Post 3</div>
+          <div class="post-caption">„Ich nutze Apex Lifter jeden Tag im Gym. Nicht weil ich muss — weil sie mir gefehlt hat, bevor ich sie gebaut habe."
+
+So einfach ist das Prinzip hinter Save State Studio: Apps, die ihr Macher selbst benutzt.
+
+apexlifter.ch</div>
+          <div class="post-hashtags">#dogfooding #indiedev #krafttraining #buildwhatyouneed</div>
+        </div>
+      </div>
+
+      <div class="post-card">
+        <img src="images/post4_friend.png" alt="Save State Studio Freunde/Buzz-Insider-Post">
+        <div class="post-body">
+          <div class="post-platform">Instagram — Post 4</div>
+          <div class="post-caption">Kleiner Insider für alle, die Apex Lifter schon nutzen:
+
+Füg mich als Freund hinzu und buzz mich ins Gym, wenn ich mal wieder zu lange am Code sitze statt zu trainieren. 😉
+
+Gebaut von einem, der nach Feierabend — und nach der Familie — noch selbst an seiner App tüftelt.</div>
+          <div class="post-hashtags">#indiedev #buildinpublic #gymlife #easteregg</div>
+        </div>
+      </div>
+
+      <div class="post-card">
+        <img src="images/linkedin_banner.png" alt="Save State Studio LinkedIn-Post" style="object-position: center;">
+        <div class="post-body">
+          <div class="post-platform">LinkedIn — Launch-Post</div>
+          <div class="post-caption">Ich habe ein neues kleines Studio gegründet: Save State Studio.
+
+Kein grosses Team, keine Investoren — ein Vollzeit-Job tagsüber, und abends/am Wochenende Zeit für das, was mir schon lange gefehlt hat: Software, die ehrlich ist. Fairer Preis. Keine Werbung. Kein Wachstums-Zwang um seiner selbst willen.
+
+Das erste Projekt ist bereits live: Apex Lifter, eine native Android-Trainings-App, die ich selbst jeden Tag im Gym benutze.
+
+Mehr über die Philosophie dahinter und was als Nächstes kommt: savestate.ch</div>
+          <div class="post-hashtags">#buildinpublic #indiedev #softwarecraft #nobullshit</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= ASSETS ================= -->
+  <section id="assets">
+    <span class="section-eyebrow">06 — Bild-Material</span>
+    <h2 class="section-title">Assets</h2>
+    <p class="section-intro">Pixel-Art-Disketten-Icon in Gold auf Dunkelgrau, Manrope als Schrift — bewusst reduzierter als das Apex-Lifter-Branding: kein Violett, nur Gold + Grau + Cream, für einen ruhigeren, persönlicheren „Studio statt Produkt"-Look.</p>
+    <div class="asset-grid">
+      <div class="asset-card">
+        <img class="round" src="images/profile_picture.png" alt="Profilbild">
+        <div class="asset-name">Profilbild</div>
+        <div class="asset-spec">512 × 512 px — für beide Plattformen</div>
+      </div>
+      <div class="asset-card">
+        <img src="images/linkedin_banner.png" alt="LinkedIn-Titelbild">
+        <div class="asset-name">LinkedIn-Titelbild</div>
+        <div class="asset-spec">2256 × 382 px</div>
+      </div>
+      <div class="asset-card">
+        <img src="images/post1_intro.png" alt="Post 1">
+        <div class="asset-name">Post 1 — Intro</div>
+        <div class="asset-spec">1620 × 1620 px</div>
+      </div>
+      <div class="asset-card">
+        <img src="images/post2_manifesto.png" alt="Post 2">
+        <div class="asset-name">Post 2 — No-Bullshit-Manifest</div>
+        <div class="asset-spec">1620 × 1620 px</div>
+      </div>
+      <div class="asset-card">
+        <img src="images/post3_quote.png" alt="Post 3">
+        <div class="asset-name">Post 3 — Dogfooding-Zitat</div>
+        <div class="asset-spec">1620 × 1620 px</div>
+      </div>
+      <div class="asset-card">
+        <img src="images/post4_friend.png" alt="Post 4">
+        <div class="asset-name">Post 4 — Freunde/Buzz-Insider</div>
+        <div class="asset-spec">1620 × 1620 px</div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="note">Save State Studio — das Studio hinter Apex Lifter (apexlifter.ch). Pixel-Disketten-Icon, Gold-Akzent und Manrope-Schrift bewusst reduzierter gehalten als das Produkt-Branding.</footer>
+</div>
+
+<script>
+  document.querySelectorAll('.copy-btn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var target = document.getElementById(btn.getAttribute('data-copy'));
+      if (!target) return;
+      var text = target.textContent;
+      try {
+        navigator.clipboard.writeText(text).then(function () {
+          var original = btn.textContent;
+          btn.textContent = 'Kopiert';
+          btn.classList.add('copied');
+          setTimeout(function () { btn.textContent = original; btn.classList.remove('copied'); }, 1500);
+        });
+      } catch (e) {}
+    });
+  });
+</script>
+</body>
+</html>
